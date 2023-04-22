@@ -78,18 +78,18 @@ app.use(express.static('views'));
 // })
 
 app.get('/signup',(req,res)=>{
-    res.render('./Signup/index.ejs');
+    res.render('Signup/index.ejs');
 })
 
 // app.get('/login',(req,res)=>{
-//     res.render('./Main/index.ejs');
+//     res.render('Main/index.ejs');
 // })
 
 app.get('/login',async (req,res)=>{
     const collection = await dbConnect('DictData','userData');
         let data = await collection.findOne({phone : req.body.phone});
         data.info = '';
-    res.render('./Login/index.ejs',{data});
+    res.render('Login/index.ejs',{data});
 })
 
 app.post('/dictionary', async (req,res)=>{
@@ -105,7 +105,7 @@ app.post('/dictionary', async (req,res)=>{
         let data = await collection.findOne({phone : phone});
         if(data.password === password){
             data.info = '';
-            res.render('./Main/index.ejs',{data});
+            res.render('Main/index.ejs',{data});
         }
         else{
             res.send('<h1 style="color:red;"> Id or password you entered are incorrect, Go back and try again!!!!');
