@@ -148,4 +148,4 @@ app.post('/signup_', async (req,res)=>{
     }
 })
 
-app.listen(30256);
+app.listen(3000);
