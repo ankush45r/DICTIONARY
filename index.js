@@ -87,27 +87,28 @@ app.get('/signup',(req,res)=>{
 //     res.render('Main/main.ejs');
 // })
 
-app.get('/login',async (req,res)=>{
+app.get('/login', (req,res)=>{
     res.render('Login/login.ejs');
 })
 
-app.get('/dictionary', async (req,res)=>{
-    try{
-        phone = req.body.phone;
-        password = req.body.password;
-        console.log(phone);
-        console.log(password)
-        // phone = '7700856845';
-        // password = 'Ankush@123';
-        const collection = await dbConnect('DictData','userData');
-        let data = await collection.findOne({phone : phone});
-        if(data.password === password){
-            data.info = '';
-            res.render('Main/main.ejs',{data});
-        }
-        else{
-            res.send('<h1 style="color:red;"> Id or password you entered are incorrect, Go back and try again!!!!');
-        }
+app.get('/dictionary',  (req,res)=>{
+    res.render('Main/main.ejs');
+//     try{
+//         phone = req.body.phone;
+//         password = req.body.password;
+//         console.log(phone);
+//         console.log(password)
+//         // phone = '7700856845';
+//         // password = 'Ankush@123';
+//         const collection = await dbConnect('DictData','userData');
+//         let data = await collection.findOne({phone : phone});
+//         if(data.password === password){
+//             data.info = '';
+//             res.render('Main/main.ejs',{data});
+//         }
+//         else{
+//             res.send('<h1 style="color:red;"> Id or password you entered are incorrect, Go back and try again!!!!');
+//         }
 
     }
     catch(e){
