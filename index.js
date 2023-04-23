@@ -91,7 +91,7 @@ app.get('/login',async (req,res)=>{
     res.render('Login/login.ejs');
 })
 
-app.post('/dictionary', async (req,res)=>{
+app.get('/dictionary', async (req,res)=>{
     try{
         phone = req.body.phone;
         password = req.body.password;
