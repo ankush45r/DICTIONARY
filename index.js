@@ -88,10 +88,7 @@ app.get('/signup',(req,res)=>{
 // })
 
 app.get('/login',async (req,res)=>{
-    const collection = await dbConnect('DictData','userData');
-        let data = await collection.findOne({phone : req.body.phone});
-        data.info = '';
-    res.render('Login/login.ejs',{data});
+    res.render('Login/login.ejs');
 })
 
 app.post('/dictionary', async (req,res)=>{
@@ -102,7 +99,6 @@ app.post('/dictionary', async (req,res)=>{
         console.log(password)
         // phone = '7700856845';
         // password = 'Ankush@123';
-        let info;
         const collection = await dbConnect('DictData','userData');
         let data = await collection.findOne({phone : phone});
         if(data.password === password){
@@ -116,7 +112,7 @@ app.post('/dictionary', async (req,res)=>{
     }
     catch(e){
         console.log(e);
-        res.send(`<h1 style="color:red;"> Id or password you entered are incorrect, Go back and try again!!!!`);
+//         res.send(`<h1 style="color:red;"> Id or password you entered are incorrect, Go back and try again!!!!`);
     }
 })
 
@@ -133,8 +129,8 @@ app.post('/signup_', async (req,res)=>{
         // const userData = await dbConnect('DictData','userData');
         const what = await insert_(signupData);
         // res.send(action);
-        console.log("->"+what)
-        const collection = await dbConnect('DictData','userData');
+//         console.log("->"+what)
+//         const collection = await dbConnect('DictData','userData');
         // const data = await collection.findOne({phone : phone});
         // res.render('Login/login.ejs',{data});
         if(what == 0){
